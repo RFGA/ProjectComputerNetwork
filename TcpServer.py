@@ -8,7 +8,7 @@ homepage = f.read()
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print(s)
 
-s.bind(('', 8093))
+s.bind(('', 8087))
 s.listen(5)
 #conn, addr = s.accept()
 
@@ -22,14 +22,12 @@ while True:
     page = ('HTTP/1.0 200 OK\r\n' +
                  'Content-Type: text/html\r\n' +
                  'Content-Length: ' + str(len(homepage)) + '\r\n\r\n' + homepage)
-    conn.sendall(page.encode())
-    if dataParse[0] == "GET":
+    print(dataParse[0])
+    if 'GET' in str(data):
         dataParse = data.split(' ')
+        print('passei')
         if dataParse[1] == '/':
-            conn.sendall('HTTP/1.0 200 OK\r\n' +
-                         'Content-Type: text/html\r\n' +
-                         'Content-Length: ' + str(len(homepage)) + '\r\n\r\n' +
-                          (homepage))
+            conn.sendall(page.encode())
         else:
             conn.sendall('HTTP/1.0 200 OK\r\n' +
                          'Content-Type: image/jpeg\r\n' +
