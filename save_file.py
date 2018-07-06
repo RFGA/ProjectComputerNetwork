@@ -2,36 +2,41 @@
 import cgi, os
 import cgitb; cgitb.enable()
 
-form = cgi.FieldStorage()
 
-# Get filename here.
-fileitem = form['filename']
 
-# Primeiro nós verificamos se um arquivo foi selecionado
-if fileitem.filename:
-    # Em seguida verificamos se o diretório de arquivos foi criado
-    if not os.path.exists(os.path.join(os.getcwd(), 'tmp')):
-        # Senão nós o criamos
-        os.mkdir(os.path.join(os.getcwd(), 'tmp'))
 
-    # Nós removemos do nome do arquivo o caminho no diretório do cliente
-    fn = os.path.basename(fileitem.filename)
+def savefile():
+    form = cgi.FieldStorage()
 
-    # Em seguida nós escrevemos o arquivo no servidor
-    open(os.path.join(os.getcwd(), 'tmp', fn), 'wb').write(fileitem.file.read())
+    # Get filename here.
+    fileitem = form['filename']
 
-    # Criamos a mensagem a ser disponibilizada
-    mensagem = 'O arquivo "' + fn + '" foi enviado com sucesso!'
+    # Primeiro nós verificamos se um arquivo foi selecionado
+    if fileitem.filename:
+        print('deu certooooo')
+        # Em seguida verificamos se o diretório de arquivos foi criado
+        if not os.path.exists(os.path.join(os.getcwd(), 'tmp')):
+            # Senão nós o criamos
+            os.mkdir(os.path.join(os.getcwd(), 'tmp'))
 
-else:
-    mensagem = 'Nenhum arquivo foi selecionado'
+        # Nós removemos do nome do arquivo o caminho no diretório do cliente
+        fn = os.path.basename(fileitem.filename)
 
-print("""\
-Content-Type: text/html\n
-<html>
-<body>
-   <p>%s</p>
-</body>
-</html>
-""" % mensagem
-      )
+        # Em seguida nós escrevemos o arquivo no servidor
+        open(os.path.join(os.getcwd(), 'tmp', fn), 'wb').write(fileitem.file.read())
+
+        # Criamos a mensagem a ser disponibilizada
+        mensagem = 'O arquivo "' + fn + '" foi enviado com sucesso!'
+
+    else:
+        mensagem = 'Nenhum arquivo foi selecionado'
+
+    print("""\
+    Content-Type: text/html\n
+    <html>
+    <body>
+       <p>%s</p>
+    </body>
+    </html>
+    """ % mensagem
+          )
