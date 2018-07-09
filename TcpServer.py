@@ -22,15 +22,22 @@ while True:
     page = ('HTTP/1.0 200 OK\r\n' +
                  'Content-Type: text/html\r\n' +
                  'Content-Length: ' + str(len(homepage)) + '\r\n\r\n' + homepage)
-    msg = "HTTP/1.0 200 OK\r\n"
+    msg = ('HTTP/1.0 201 Created\r\n'+
+           'Location: http://localhost:8081/data/1\r\n\r\n')
     if 'GET' in str(data):
         dataParse = data.split(' ')
-        print('passei')
         conn.sendall(page.encode())
-    if 'POST' in str(data):
+    elif 'POST' in str(data):
+        print("ENTROU NO PST")
+       ## conn.sendall(msg.encode())
         conn.sendall(msg.encode())
-
+        data = str(conn.recv(500000))
         print(data)
+    else:
+        print('queisdf')
+        if not os.path.exists(os.path.join(os.getcwd(), 'tmp')):
+            # Senão nós o criamos
+            os.mkdir(os.path.join(os.getcwd(), 'tmp'))
 
     conn.close()
 s.close()
