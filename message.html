@@ -1,8 +1,59 @@
-<HTML>
-<HEAD>
-   <TITLE>Mensagem encriptada</TITLE>
-</HEAD>
-<BODY>
-   <h1>msg</h1>
-</BODY>
-</HTML>
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+
+		<title>Mensagem Criptografada</title>
+
+		<!-- bootstrap - link cdn -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	</head>
+
+	<body>
+
+		<!-- Static navbar -->
+	    <nav class="navbar navbar-default navbar-static-top">
+	      <div class="container">
+	        <div class="navbar-header">
+	        	<h3 class="col-md-12">Criptografia/Descriptografia de textos</h3>
+	        </div>
+	      </div>
+	    </nav>
+
+
+	    <div class="container">
+
+
+	    	<br/>
+	    	<div class="row">
+		    	<div class="col-md-1"></div>
+
+		    	<div class="col-md-10">
+		    		<div class="panel panel-default">
+		    			<div class="panel-body">
+
+		    				<h4>Mensagem criptografada</h4>
+
+		    				<hr/>
+
+		    				<form method="post" action="data" enctype="multipart/form-data">
+
+			    				<div class="form-group">
+									<div class="col-md-12">
+										<p>msg</p>
+
+										<input type="submit" class="btn btn-primary col-md-12" value="Descriptografar">
+									</div>
+								</div>
+
+							</form>
+
+		    			</div>
+		    		</div>
+		    	</div>
+			</div>
+
+		</div>
+	</body>
+</html>

@@ -42,23 +42,23 @@ while True:
         dataParse = data.split(' ')
         conn.sendall(page.encode())
     elif 'POST' in str(data):
+        if '/encrypt' in str(data):
 
-        msg = ('HTTP/1.0 201 Created\r\n' +
-               'Location: http://localhost:8081/data/1\r\n\r\n')
-        ##conn.sendall(msg.encode())
-       
-        print(data)
-        text = data
-        text = data[data.find('name="filename"')+len('name="filename"________'):]
-        text = text[:text.find('\\r\\n')]
-        chave, texto = encrypt(text)
-        message = message.replace('msg', str(texto))
-        pageMensagem = ('HTTP/1.0 200 OK\r\n' +
+
+            print(data)
+            text = data
+            text = data[data.find('name="filename"')+len('name="filename"________'):]
+            text = text[:text.find('\\r\\n')]
+            chave, texto = encrypt(text)
+            message = message.replace('msg', str(texto))
+            pageMensagem = ('HTTP/1.0 200 OK\r\n' +
                 'Content-Type: text/html\r\n' +
                 'Content-Length: ' + str(len(message)) + '\r\n\r\n' + message)
+            conn.sendall(pageMensagem.encode())
+        elif '/decrypt' in str(data):
+            print(data)
 
 
-        conn.sendall(pageMensagem.encode())
     else:
         if not os.path.exists(os.path.join(os.getcwd(), 'tmp')):
             # Senão nós o criamos
