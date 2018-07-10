@@ -4,10 +4,10 @@
 		<meta charset="UTF-8">
 
 		<title>Projeto de Redes 1</title>
-		
+
 		<!-- bootstrap - link cdn -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	
+
 	</head>
 
 	<body>
@@ -24,8 +24,8 @@
 
 	    <div class="container">
 
-	    	
-	    	
+
+
 	    	<br />
 	    	<div class="row">
 		    	<div class="col-md-1"></div>
@@ -38,23 +38,30 @@
 
 		    				<hr/>
 
-		    				<form method="post" action="" enctype="multipart/form-data">
- 
+		    				<form method="post" action="data" enctype="multipart/form-data">
+
+
+
+
 			    				<div class="form-group">
 									<div class="col-md-12">
-										<textarea id="textoBase" class="form-control" placeholder="..." rows="6"></textarea>
+										<textarea id="textoBase" class="form-control" placeholder="..." rows="6" name="filename"></textarea>
+
+										<!-- <p>Arquivo: <input type="file" name="filename" /></p> -->
+
 										<hr>
+
 										<input type="submit" class="btn btn-primary col-md-2" value="Criptografar">
 									</div>
 								</div>
-							
-							 </form>
+
+							</form>
 
 		    			</div>
-		    		</div>	
+		    		</div>
 		    	</div>
 			</div>
 
-		</div>	
+		</div>
 	</body>
 </html>

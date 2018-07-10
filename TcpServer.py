@@ -1,7 +1,7 @@
 import socket
 import os
 from cryptography.fernet import Fernet
-from save_file import savefile
+
 f = open('index.html', 'r')
 g = open('message.html', 'r')
 homepage = f.read()
@@ -46,9 +46,10 @@ while True:
         msg = ('HTTP/1.0 201 Created\r\n' +
                'Location: http://localhost:8081/data/1\r\n\r\n')
         ##conn.sendall(msg.encode())
-        data = str(conn.recv(50000))
+       
+        print(data)
         text = data
-        text = data[data.find('text/plain')+len('text/plain________'):]
+        text = data[data.find('name="filename"')+len('name="filename"________'):]
         text = text[:text.find('\\r\\n')]
         chave, texto = encrypt(text)
         message = message.replace('msg', str(texto))
