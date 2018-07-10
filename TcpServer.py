@@ -50,12 +50,16 @@ while True:
             text = data[data.find('name="filename"')+len('name="filename"________'):]
             text = text[:text.find('\\r\\n')]
             chave, texto = encrypt(text)
-            message = message.replace('msg', str(texto))
+            message = message.replace('msg','Chave: '+str(chave)[2:len(str(chave))-1]+'        Mensagem: '+ str(texto)[2:len(str(texto))-1])
             pageMensagem = ('HTTP/1.0 200 OK\r\n' +
                 'Content-Type: text/html\r\n' +
                 'Content-Length: ' + str(len(message)) + '\r\n\r\n' + message)
             conn.sendall(pageMensagem.encode())
         elif '/decrypt' in str(data):
+            text = data
+            text = data[data.find('name="filename"') + len('name="filename"________'):]
+            text = text[:text.find('\\r\\n')]
+
             print(data)
 
 
