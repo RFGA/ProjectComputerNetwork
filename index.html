@@ -1,8 +1,60 @@
-<html>
-<body>
-   <form enctype="multipart/form-data" action="data" method="post">
-   <p>Arquivo: <input type="file" name="filename" /></p>
-   <p><input type="submit" value="Enviar" /></p>
-   </form>
-</body>
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+
+		<title>Projeto de Redes 1</title>
+		
+		<!-- bootstrap - link cdn -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	
+	</head>
+
+	<body>
+
+		<!-- Static navbar -->
+	    <nav class="navbar navbar-default navbar-static-top">
+	      <div class="container">
+	        <div class="navbar-header">
+	        	<h3 class="col-md-12">Criptografia/Descriptografia de textos</h3>
+	        </div>
+	      </div>
+	    </nav>
+
+
+	    <div class="container">
+
+	    	
+	    	
+	    	<br />
+	    	<div class="row">
+		    	<div class="col-md-1"></div>
+
+		    	<div class="col-md-10">
+		    		<div class="panel panel-default">
+		    			<div class="panel-body">
+
+		    				<h4>Digite o seu texto abaixo</h4>
+
+		    				<hr/>
+
+		    				<form method="post" action="" enctype="multipart/form-data">
+ 
+			    				<div class="form-group">
+									<div class="col-md-12">
+										<textarea id="textoBase" class="form-control" placeholder="..." rows="6"></textarea>
+										<hr>
+										<input type="submit" class="btn btn-primary col-md-2" value="Criptografar">
+									</div>
+								</div>
+							
+							 </form>
+
+		    			</div>
+		    		</div>	
+		    	</div>
+			</div>
+
+		</div>	
+	</body>
 </html>
